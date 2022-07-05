@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08040878-0499-4773-a767-61b6d81a273f" name="Changes" comment="" />
+    <list default="true" id="08040878-0499-4773-a767-61b6d81a273f" name="Changes" comment="hiding Credentials">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,8 +76,16 @@
       <workItem from="1657033989507" duration="5000" />
       <workItem from="1657034069866" duration="115000" />
       <workItem from="1657034212875" duration="8000" />
-      <workItem from="1657034260387" duration="2343000" />
+      <workItem from="1657034260387" duration="2737000" />
     </task>
+    <task id="LOCAL-00001" summary="hiding Credentials">
+      <created>1657036617783</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657036617783</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,5 +101,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="hiding Credentials" />
+    <option name="LAST_COMMIT_MESSAGE" value="hiding Credentials" />
   </component>
 </project>
