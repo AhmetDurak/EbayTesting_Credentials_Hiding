@@ -15,6 +15,7 @@ public class LoginStepDefs {
         ebay.consent.click();
         ebay.login.click();
 
+
         ebay.credentials();
     }
 }
