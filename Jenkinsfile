@@ -26,7 +26,6 @@ pipeline {
                 bat "powershell copy-item ${SECRET_FILE_ID} -Destination C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\"
                 bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
 
-                echo "FILE : ${SECRET_FILE_ID}"
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
@@ -36,16 +35,6 @@ pipeline {
 
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
-            }
-            stage('test') {
-                echo 'Building anotherJob and getting the log'
-
-                script {
-                    def bRun = build 'anotherJob'
-                    echo 'last 100 lines of BuildB'
-                    for(String line : bRun.getRawBuild().getLog(100)){
-                        echo line
-                    }
             }
 
             post {
