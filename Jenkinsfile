@@ -10,9 +10,9 @@ pipeline{
           stage("test"){
             steps {
               echo 'testing the application...'
-              withCredentials([usernamePassword(credentialsId: 'ahmetdurakId', usernameVariable: USER, passwordVariable: PWD]){
-                echo "username: ${USER}"
-                echo "password: ${PWD}"
+              withCredentials([usernamePassword(credentialsId: 'ahmetdurakId', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                echo "username: ${user}"
+                echo "password: ${pwd}"
               }
             }
           }  
