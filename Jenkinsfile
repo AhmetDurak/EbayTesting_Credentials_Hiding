@@ -17,7 +17,7 @@ pipeline {
 
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
-                bat "powershell get-item Get-Childitem –Path C:\ -Recurse"
+                bat "powershell get-item Get-Childitem –Path C:\\ -Recurse"
                 bat "powershell copy-item ${SECRET_FILE_ID}"
 
                 // Run Maven on a Unix agent.
