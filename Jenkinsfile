@@ -17,7 +17,7 @@ pipeline {
 
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
-                bat "powershell get-item C:\\Program Files\\*"
+                bat "powershell get-item C:\\*"
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
                 //bat "powershell copy-item ${SECRET_FILE_ID}"
