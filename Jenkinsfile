@@ -18,14 +18,16 @@ pipeline {
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
                 bat "powershell Get-Childitem –Path C:\\ -Recurse"
-                bat "powershell copy-item ${SECRET_FILE_ID}"
+
+                bat "powershell remove-item ${SECRET_FILE_ID}"
+                //bat "powershell copy-item ${SECRET_FILE_ID}"
 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn clean"
-                bat "mvn test -q"
+                //bat "mvn clean"
+                //bat "mvn test -q"
 
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
