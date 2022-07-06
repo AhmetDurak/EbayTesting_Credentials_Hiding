@@ -4,7 +4,7 @@ pipeline{
   agent any
   
   stages{
-    stage("init"){
+    stage('initiate the script'){
       steps{
         script {
           gy = load "script.groovy"
