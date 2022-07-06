@@ -1,4 +1,0 @@
-node{
-  //groovy script
-  
-}
