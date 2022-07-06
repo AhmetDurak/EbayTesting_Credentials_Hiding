@@ -31,8 +31,8 @@ pipeline {
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn clean"
-                bat "mvn test -q"
+                //bat "mvn clean"
+                //bat "mvn test -q"
 
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
