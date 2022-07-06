@@ -36,20 +36,20 @@ pipeline {
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
             }
-            stage('Test') {
-               steps{
-                    bat "mvn clean"
-                    bat "mvn test"
-               }
-            }
 
-            post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                always {
-                    cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-                }
+           // post {
+           //     // If Maven was able to run the tests, even if some of the test
+           //     // failed, record the test results and archive the jar file.
+           //     always {
+           //         cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
+           //     }
             }
         }
+        stage('Test') {
+             steps{
+                  bat "mvn clean"
+                  bat "mvn test"
+             }
+          }
     }
 }
