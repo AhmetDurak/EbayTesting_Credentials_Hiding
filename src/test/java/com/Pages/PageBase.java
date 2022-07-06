@@ -11,29 +11,26 @@ public class PageBase {
     //    PageFactory.initElements(Driver.get(),this);
     //}
 
-    @FindBy(id = "gdpr-banner-accept")
-    public WebElement consent;
-
-    @FindBy(css = "#gh-ug>a")
-    public WebElement login;
-
-    @FindBy(id = "userid")
+    @FindBy(id = "login")
     public WebElement username;
 
-    @FindBy(id = "signin-continue-btn")
-    public WebElement continueBtn;
 
-    @FindBy(id = "pass")
+    @FindBy(id = "password")
     public WebElement password;
+
+    @FindBy(css = "button[type='submit']")
+    public WebElement loginBtn;
 
 
     /**
      * This method will return a valid credential as a tester
      */
     public void credentials(){
-        //this.username.sendKeys(GetCredentials.get("username"));
-        //this.continueBtn.click();
-        //this.password.sendKeys(GetCredentials.get("password") + Keys.ENTER);
+
+        this.username.sendKeys(GetCredentials.get("username"));
+        this.password.sendKeys(GetCredentials.get("password") + Keys.ENTER);
+
+
         System.out.println("LOOK AT HERE !!!!!!!!!!!!!!!!!!!");
         System.out.println(GetCredentials.get("username"));
         System.out.println(GetCredentials.get("password"));
