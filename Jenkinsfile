@@ -19,7 +19,7 @@ pipeline {
                 echo 'coping credentials to the code'
                 bat "powershell Get-Childitem –Path C:\\Users\\*"
 
-                bat "powershell remove-item ${SECRET_FILE_ID}"
+                //bat "powershell remove-item ${SECRET_FILE_ID}"
                 //bat "powershell copy-item ${SECRET_FILE_ID}"
 
                 // Run Maven on a Unix agent.
