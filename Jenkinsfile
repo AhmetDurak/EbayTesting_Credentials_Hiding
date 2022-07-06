@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Build') {
             environment{
-                SECRET_FILE_ID = withCredentials('CredentialsFile')
+                SECRET_FILE_ID = credentials('CredentialsFile')
             }
             steps {
                 // Get some code from a GitHub repository
