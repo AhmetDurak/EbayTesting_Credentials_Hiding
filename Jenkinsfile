@@ -10,7 +10,7 @@ pipeline{
           stage("test"){
             steps {
               echo 'testing the application...'
-              withCredentials([usernamePassword(credentialsId: 'ahmetdurakGlobal', passwordVariable: 'pass', usernameVariable: 'user')]) {
+              withCredentials([usernamePassword(credentialsId: 'multibranchPipeline', passwordVariable: 'pass', usernameVariable: 'user')]) {
                 echo "username: ${user}"
                 echo "password: ${pass}"
               }
