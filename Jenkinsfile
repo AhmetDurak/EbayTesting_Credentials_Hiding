@@ -37,6 +37,16 @@ pipeline {
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
             }
+            stage('test') {
+                echo 'Building anotherJob and getting the log'
+
+                script {
+                    def bRun = build 'anotherJob'
+                    echo 'last 100 lines of BuildB'
+                    for(String line : bRun.getRawBuild().getLog(100)){
+                        echo line
+                    }
+            }
 
             post {
                 // If Maven was able to run the tests, even if some of the test
