@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/AhmetDrkTraining/qa.Fidexio.git/'
+                git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
@@ -27,7 +27,7 @@ pipeline {
                 bat "mvn test -q"
 
 
-                bat "powershell remove-item ${SECRET_FILE_ID}"
+                //bat "powershell remove-item ${SECRET_FILE_ID}"
             }
 
             post {
