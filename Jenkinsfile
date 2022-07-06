@@ -1,7 +1,12 @@
+def gv
+
 pipeline{
   agent any
   
   stages{
+    stage("init"){
+      gy = load "script.groovy"
+    }
     stage("build"){
           steps {
             echo 'building the application...'
@@ -10,10 +15,8 @@ pipeline{
           stage("test"){
             steps {
               echo 'testing the application...'
-              withCredentials([usernamePassword(credentialsId: 'JenkinsCredentialGlobal', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                echo "username: ${USER}"
-                echo "password: ${PASS}"
-              }
+              gv.addCredentials()
+
             }
           }  
           
