@@ -20,15 +20,16 @@ pipeline{
           }
   }
           post {
-            always {
+            //always {
               // will be executed whatever the result is
               // you can also send email your teammates
-            }
+            //}
             success {
               // will be executed when the code run successfully
+              cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
             }
-            failure {
+            //failure {
               // will be executed when the code faced with a failure
-            }
+            //}
           }
 }
