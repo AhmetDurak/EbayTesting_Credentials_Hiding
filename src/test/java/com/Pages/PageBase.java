@@ -31,7 +31,6 @@ public class PageBase {
      * This method will return a valid credential as a tester
      */
     public void credentials(){
-        String username = "extendyoursenses@gmail.com";
         this.username.sendKeys(GetCredentials.get("username"));
         this.continueBtn.click();
         this.password.sendKeys(GetCredentials.get("password") + Keys.ENTER);
