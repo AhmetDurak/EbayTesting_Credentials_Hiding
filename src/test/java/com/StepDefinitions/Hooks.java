@@ -12,8 +12,8 @@ public class Hooks {
         Driver.get().get(ConfigurationReader.get("url"));
     }
 
-    //@After
-    //public void tearDown(){
-        //Driver.closeDriver();
-    //}
+    @After
+    public void tearDown(){
+      //Driver.closeDriver();
+    }
 }
