@@ -18,7 +18,6 @@ pipeline {
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
                 bat "powershell get-item C:\\*"
-                echo "workplace path: ${environment.WORKPLACE}"
                 bat "powershell copy-item ${SECRET_FILE_ID}"
 
                 // Run Maven on a Unix agent.
