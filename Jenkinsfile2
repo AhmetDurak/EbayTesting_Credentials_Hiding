@@ -1,0 +1,34 @@
+pipeline{
+  agent any
+  
+  stages{
+    stage("build){
+          steps {
+            echo 'building the application...'
+          }
+    }
+          stage("test"){
+            steps {
+              echo 'testing the application...'
+            }
+          }  
+          
+          stage("deploy"){
+            steps {
+              echo 'deploying the application...'
+            }
+          }
+  }
+          post {
+            always {
+              // will be executed whatever the result is
+              // you can also send email your teammates
+            }
+            success {
+              // will be executed when the code run successfully
+            }
+            failure {
+              // will be executed when the code faced with a failure
+            }
+          }
+}
