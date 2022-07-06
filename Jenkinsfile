@@ -17,7 +17,7 @@ pipeline {
 
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
-                bat "powershell get-item C:\\*"
+                bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
                 //bat "powershell copy-item ${SECRET_FILE_ID}"
