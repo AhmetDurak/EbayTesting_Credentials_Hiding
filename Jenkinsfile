@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment{
+                    SECRET_FILE_ID = credentials('CredentialsFile')
+                }
+
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
@@ -8,9 +12,7 @@ pipeline {
 
     stages {
         stage('Build') {
-            environment{
-                SECRET_FILE_ID = credentials('CredentialsFile')
-            }
+
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
@@ -35,6 +37,12 @@ pipeline {
 
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
+            }
+            stage('Test') {
+                   steps{
+                        bat "mvn clean"
+                        bat "mvn test"
+                   }
             }
 
             post {
