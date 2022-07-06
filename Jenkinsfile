@@ -10,21 +10,28 @@ pipeline {
         stage('Build') {
             environment{
                 SECRET_FILE_ID = credentials('CredentialsFile')
+                SECRET_TEXT_ID = credentials('SecretKey')
             }
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
                 // Put the credentials into file directory
-                echo 'coping credentials to the code'
-                bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
-                bat "powershell remove-item -Path C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\Credentials.properties"
-                echo 'after removing the file'
-                bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
+                //echo 'coping credentials to the code'
+                //bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
+                //bat "powershell remove-item -Path C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\Credentials.properties"
+                //echo 'after removing the file'
+                //bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
 
-                echo 'after copying the file'
-                bat "powershell copy-item ${SECRET_FILE_ID} -Destination C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\"
-                bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
+                //echo 'after copying the file'
+                //bat "powershell copy-item ${SECRET_FILE_ID} -Destination C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\"
+                //bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\*"
+
+
+                // replacing text with the secret text
+                echo 'replacing text with the secret text'
+                bat "powershell (get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java) -replace 'ahmet','${SECRET_TEXT_ID}'|set-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java"
+
 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
