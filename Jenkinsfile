@@ -10,7 +10,6 @@ pipeline {
         stage('Build') {
             environment{
                 SECRET_FILE_ID = credentials('CredentialsFile')
-                def workplace = env.WORKPLACE
             }
             steps {
                 // Get some code from a GitHub repository
@@ -19,7 +18,7 @@ pipeline {
                 // Put the credentials into file directory
                 echo 'coping credentials to the code'
                 bat "powershell get-item C:\\*\\pom.xml"
-                echo "workplace path: ${workplace}"
+                echo "workplace path: ${environment.WORKPLACE}"
                 bat "powershell copy-item ${SECRET_FILE_ID}"
 
                 // Run Maven on a Unix agent.
