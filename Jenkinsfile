@@ -12,7 +12,7 @@ pipeline{
               echo 'testing the application...'
               withCredentials([usernamePassword(credentialsId: 'ahmetdurakGlobal', passwordVariable: 'pass', usernameVariable: 'user')]) {
                 echo "username: ${user}"
-                echo "password: ${pwd}"
+                echo "password: ${pass}"
               }
             }
           }  
