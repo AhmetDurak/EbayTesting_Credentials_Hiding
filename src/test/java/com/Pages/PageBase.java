@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import com.Utilities.*;
 
 public class PageBase {
-    //public PageBase(){
-    //    PageFactory.initElements(Driver.get(),this);
-    //}
+    public PageBase(){
+        PageFactory.initElements(Driver.get(),this);
+    }
 
     @FindBy(id = "login")
     public WebElement username;
