@@ -10,7 +10,7 @@ pipeline{
             echo 'building the application...'
             echo 'coping credentials to the code'
             bat "powershell copy-item ${SECRET_FILE_ID} -Destination HelloWorld/"
-            bat "powershell rename-item "HelloWorld\Secret.txt" -NewName "Credentials.properties"
+            bat "powershell rename-item "Secret.txt" -NewName "Credentials.properties"
           }
     }
           stage("test"){
