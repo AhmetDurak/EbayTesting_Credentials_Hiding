@@ -39,7 +39,7 @@ pipeline {
 
                 // To run Maven on a Windows agent, use
                 //bat "mvn clean"
-                bat "mvn test"
+                //bat "mvn test"
 
 
                 //bat "powershell remove-item ${SECRET_FILE_ID}"
