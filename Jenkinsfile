@@ -30,7 +30,7 @@ pipeline {
 
                 // replacing text with the secret text
                 echo 'replacing text with the secret text'
-                bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\*"
+                bat "powershell get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java"
                 echo "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java"
                 bat "powershell (get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java) -replace 'ahmet','${SECRET_TEXT_ID}'|set-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java"
                 echo "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\EbayLogin_master\\src\\test\\java\\com\\Pages\\PageBase.java"
