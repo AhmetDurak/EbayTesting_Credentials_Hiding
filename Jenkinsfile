@@ -36,7 +36,7 @@ pipeline {
                 //String path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
 
                 echo 'replacing text with the secret text'
-                bat "powershell get-content ${path}"
+                //bat "powershell get-content ${path}"
 
                 //>powershell [System.IO.File]::WriteAllText('text.file',((get-content text.file) -replace 'is a new','MAHMUT'))
                 bat "powershell [System.IO.File]::WriteAllText(${PATH},((get-content ${PATH}) -replace 'selman','MAHMUT'))"
