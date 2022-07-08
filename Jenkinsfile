@@ -15,6 +15,7 @@ pipeline {
 
             }
             steps {
+                echo 'Now building is starting'
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
@@ -46,12 +47,15 @@ pipeline {
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
+                //bat "powershell remove-item ${SECRET_FILE_ID}"
+            }
+        }
+        stage('Test'){
+            steps{
+                echo 'Now testing is starting'
                 // To run Maven on a Windows agent, use
                 bat "mvn clean"
                 bat "mvn test"
-
-
-                //bat "powershell remove-item ${SECRET_FILE_ID}"
             }
         }
     }
