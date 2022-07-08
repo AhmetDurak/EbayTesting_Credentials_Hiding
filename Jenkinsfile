@@ -13,8 +13,6 @@ pipeline {
                 SECRET_TEXT_ID = credentials('SecretKey')
                // PATH = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
 
-
-
             }
             steps {
                 // Get some code from a GitHub repository
