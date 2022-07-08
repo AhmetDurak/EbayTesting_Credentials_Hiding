@@ -39,7 +39,7 @@ pipeline {
                 //bat "powershell get-content ${path}"
 
                 //>powershell [System.IO.File]::WriteAllText('text.file',((get-content text.file) -replace 'is a new','MAHMUT'))
-                bat "powershell [System.IO.File]::WriteAllText(${PATH},((get-content ${PATH}) -replace 'selman','MAHMUT'))"
+                bat "powershell [System.IO.File]::WriteAllText(${PATH},((get-content $PATH) -replace 'selman','MAHMUT'))"
 
 
                 //bat "powershell (get-content ${PATH}) -replace 'ahmet','${SECRET_TEXT_ID}'| set-content ${PATH}"
