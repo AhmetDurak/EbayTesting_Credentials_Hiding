@@ -26,8 +26,8 @@ public class PageBase {
      * This method will return a valid credential as a tester
      */
     public void credentials(){
-        String username = EncryptionUtils.decrypt("pxWP45eecjK6gSys6j5BKFP8EUDYnp/QNdVu7x7tVVc=", "selman");
-        String password = EncryptionUtils.decrypt("YmxjvVNiGgF9hePnl/hbJw==", "selman");
+        String username = EncryptionUtils.decrypt("pxWP45eecjK6gSys6j5BKFP8EUDYnp/QNdVu7x7tVVc=", "mahmut");
+        String password = EncryptionUtils.decrypt("YmxjvVNiGgF9hePnl/hbJw==", "mahmut");
         this.username.sendKeys(username);
         this.password.sendKeys(password + Keys.ENTER);
 
