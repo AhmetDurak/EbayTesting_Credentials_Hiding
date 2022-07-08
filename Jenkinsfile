@@ -11,6 +11,8 @@ pipeline {
             environment{
                 SECRET_FILE_ID = credentials('CredentialsFile')
                 SECRET_TEXT_ID = credentials('SecretKey')
+                PATH = "C:/Windows/system32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/FidexioCredentialDemo_master/src/test/java/com/Pages/PageBase.java"
+
 
 
             }
@@ -31,14 +33,13 @@ pipeline {
 
 
                 // replacing text with the secret text
-                String path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
-                String path2 = "C:/Windows/system32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/FidexioCredentialDemo_master/src/test/java/com/Pages/PageBase.java"
+                //String path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
 
                 echo 'replacing text with the secret text'
                 bat "powershell get-content ${path}"
 
                 //>powershell [System.IO.File]::WriteAllText('text.file',((get-content text.file) -replace 'is a new','MAHMUT'))
-                bat "powershell [System.IO.File]::WriteAllText(${path2},((get-content ${path2}) -replace 'selman','MAHMUT'))"
+                bat "powershell [System.IO.File]::WriteAllText(${PATH},((get-content ${PATH}) -replace 'selman','MAHMUT'))"
 
 
                 //bat "powershell (get-content ${PATH}) -replace 'ahmet','${SECRET_TEXT_ID}'| set-content ${PATH}"
