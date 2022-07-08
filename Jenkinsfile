@@ -9,32 +9,35 @@ pipeline {
     stages {
         stage('Build') {
             environment{
-                SECRET_TEXT_ID = credentials('SecretKey')
+                SECRET_FILE_ID = credentials('CredentialsFile')
+
             }
             steps {
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
+                 //Put the credentials into file directory
 
-                // replacing text with the secret text
+                echo 'coping credentials to the code'
 
-                echo 'replacing text with the secret text'
+                // First of all we need to copy the file in to the directory
+                echo 'copying the CredentialsFile'
+                bat "powershell copy-item ${SECRET_FILE_ID} -Destination C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\"
 
-                //>powershell [System.IO.File]::WriteAllText('text.file',((get-content text.file) -replace 'which text will be replace','which text will be inserted'))
+                bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\*"
 
-                bat "powershell [System.IO.File]::WriteAllText('C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java',((get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java) -replace 'secret-key','${SECRET_TEXT_ID}'))"
-
-                bat "powershell get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
-
-                // Run Maven on a Unix agent.
-                //sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                // THEN WE RUN THE CODE
 
                 // To run Maven on a Windows agent, use
                 bat "mvn clean"
                 bat "mvn test"
 
+                // THEN WE REMOVE the CredentialsFile
 
-                //bat "powershell remove-item ${SECRET_FILE_ID}"
+                bat "powershell remove-item -Path C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\Credentials.properties"
+
+                //bat "powershell get-item C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\*"
+
             }
 
             post {
