@@ -13,11 +13,6 @@ pipeline {
                 SECRET_TEXT_ID = credentials('SecretKey')
                 PATH = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
                 CONTENT = "get-content ${PATH}"
-                CHANGECONTENT = "powershell function changeFileContent{
-                    $String = ${CONTENT} -replace 'selman','ahmet'
-                    [System.IO.File]::WriteAllText(${CONTENT},$String)
-                }"
-
             }
             steps {
                 // Get some code from a GitHub repository
@@ -38,8 +33,7 @@ pipeline {
                 // replacing text with the secret text
                 echo 'replacing text with the secret text'
                 bat "powershell ${CONTENT}"
-                bat "powershell ${CHANGECONTENT}
-                changeFileContent"
+
                 bat "powershell ${CONTENT}"
                 //bat "powershell (get-content ${PATH}) -replace 'ahmet','${SECRET_TEXT_ID}'| set-content ${PATH}"
                 //bat "powershell get-content ${PATH}"
