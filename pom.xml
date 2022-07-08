@@ -52,13 +52,13 @@
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-jvm</artifactId>
-            <version>1.2.5</version>
+            <version>1.2.6</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>4.1.2</version>
+            <version>5.2.2</version>
         </dependency>
 
         <dependency>
