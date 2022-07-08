@@ -33,9 +33,9 @@ public class PageBase {
         this.password.sendKeys(password + Keys.ENTER);
 
 
-        //System.out.println("LOOK AT HERE !!!!!!!!!!!!!!!!!!!");
-        //System.out.println(GetCredentials.get(username));
-        //System.out.println(GetCredentials.get(password));
+        System.out.println("LOOK AT HERE !!!!!!!!!!!!!!!!!!!");
+        System.out.println(GetCredentials.get(username));
+        System.out.println(GetCredentials.get(password));
 
 
 
