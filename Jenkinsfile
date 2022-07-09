@@ -59,17 +59,17 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 always {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-                         echo '##################################################'
-                         echo '#########   REPORT IS SENDING TO EMAIL   #########'
-                         echo '##################################################'
-                         step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
-                         //emailext attachLog: true, body: 'This message is sent from jenkins', subject: 'TEST-REPORT', to: 'volkaff51@gmail.com'
+                         //echo '##################################################'
+                         //echo '#########   REPORT IS SENDING TO EMAIL   #########'
+                         //echo '##################################################'
+                         //step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
+                         emailext attachLog: true, body: 'This message is sent from jenkins', subject: 'TEST-REPORT', to: 'volkaff51@gmail.com'
 
 
-                         echo '#########################################################'
-                         echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
-                         echo '#########################################################'
-                         mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
+                         //echo '#########################################################'
+                         //echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
+                         //echo '#########################################################'
+                         //mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
                          }
             }
 
