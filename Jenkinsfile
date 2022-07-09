@@ -65,11 +65,10 @@ pipeline {
                          step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
 
 
-                         echo '#########################################################'
-                         echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
-                         echo '#########################################################'
-
-                         mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'durakahmet49@gmail.com'
+                         //echo '#########################################################'
+                         //echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
+                         //echo '#########################################################'
+                         //mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'durakahmet49@gmail.com'
                          }
             }
 
