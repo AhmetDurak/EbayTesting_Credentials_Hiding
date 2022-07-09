@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage('Build') {
             environment{
-                SECRET_FILE_ID = credentials('CredentialsFile')
                 SECRET_TEXT_ID = credentials('SecretKey')
                 //SECRET_FILE_CONTENT = readFile 'Credentials.properties'
             }
@@ -22,19 +21,11 @@ pipeline {
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
                 echo '############################################################'
-                echo '#########    REPLACING TEXT WITH THE SECRET TEXT   #########'
+                echo '#########    REPLACING SECRET-KEY WITH REAL ONE    #########'
                 echo '############################################################'
-
-                //powershell label: 'Changing secret-key', script: '''$path = "C:\\\\Windows\\\\system32\\\\config\\\\systemprofile\\\\AppData\\\\Local\\\\Jenkins\\\\.jenkins\\\\workspace\\\\FidexioCredentialDemo_master\\\\src\\\\test\\\\java\\\\com\\\\Pages\\\\PageBase.java"
-                //(get-content $path) -replace \'secret-key\',\'selman\'|set-content $path'''
 
                 powershell label: 'CHANGING THE VALUE', script: '''$path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
                 (get-content $path) -replace \'secret-key\',\'selman\'|set-content $path'''
-
-                //>powershell [System.IO.File]::WriteAllText('text.file',((get-content text.file) -replace 'is a new','MAHMUT'))
-                //bat "powershell [System.IO.File]::WriteAllText('C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java',((get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java) -replace 'secret-key',{SECRET_TEXT_ID}))"
-                //bat "powershell get-content C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
-
             }
         }
         stage('Test'){
@@ -48,7 +39,6 @@ pipeline {
                 bat "mvn test"
             }
         }
-
         stage('Deploy'){
                     steps{
                         echo '##################################################'
