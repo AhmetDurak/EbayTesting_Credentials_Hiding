@@ -11,7 +11,6 @@ pipeline {
             environment{
                 SECRET_FILE_ID = credentials('CredentialsFile')
                 SECRET_TEXT_ID = credentials('SecretKey')
-               // PATH = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\src\\test\\java\\com\\Pages\\PageBase.java"
                 //SECRET_FILE_CONTENT = readFile 'Credentials.properties'
             }
             steps {
@@ -56,7 +55,7 @@ pipeline {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
 
                          echo 'Notification is sending to User'
-                         emailext attachLog: true, body: 'In this mail you\'ll be informed about Test Execution', subject: 'Test Report Demo', to: 'volkaff51@gmail.com'
+                         mail bcc: '', body: 'In this mail you\'ll be informed about Test Execution', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
                          }
             }
 
