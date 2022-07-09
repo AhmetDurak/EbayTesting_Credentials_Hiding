@@ -77,7 +77,7 @@ pipeline {
                          echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
                          echo '#########################################################'
 
-                         mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
+                         mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'durakahmet49@gmail.com'
                          }
             }
 
