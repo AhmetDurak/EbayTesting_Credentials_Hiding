@@ -14,7 +14,10 @@ pipeline {
                 //SECRET_FILE_CONTENT = readFile 'Credentials.properties'
             }
             steps {
-                echo '#########    NOW BUILDING IS STARTING   #########'
+                echo '##################################################'
+                echo '#########     NOW BUILDING IS STARTING   #########'
+                echo '##################################################'
+
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
@@ -34,7 +37,10 @@ pipeline {
         }
         stage('Test'){
             steps{
-                echo '#########    NOW TESTING IS STARTING   #########'
+                echo '##################################################'
+                echo '#########     NOW TESTING IS STARTING    #########'
+                echo '##################################################'
+
                 // To run Maven on a Windows agent, use
                 bat "mvn clean"
                 bat "mvn test"
@@ -43,9 +49,14 @@ pipeline {
 
         stage('Deploy'){
                     steps{
+                        echo '##################################################'
                         echo '#########    NOW DEPLOYING IS STARTING   #########'
+                        echo '##################################################'
 
-                        echo '########   CLEANING WORKSPACE ###########'
+                        echo '##################################################'
+                        echo '########        CLEANING WORKSPACE     ###########'
+                        echo '##################################################'
+
                         cleanWs notFailBuild: true, patterns: [[pattern: 'pom.xml', type: 'EXCLUDE'], [pattern: 'src', type: 'EXCLUDE'], [pattern: 'Credentials.properties', type: 'INCLUDE']]
 
                     }
@@ -56,11 +67,16 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 always {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-                         echo '#########    REPORT IS SENDING TO EMAIL   #########'
+                         echo '##################################################'
+                         echo '#########   REPORT IS SENDING TO EMAIL   #########'
+                         echo '##################################################'
                          step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
 
 
+                         echo '#########################################################'
                          echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
+                         echo '#########################################################'
+
                          mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
                          }
             }
