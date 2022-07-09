@@ -65,8 +65,8 @@ pipeline {
                             echo '#########   COMPRESSING THE REPORT FOLDER   #########'
                             echo '#####################################################'
 
-                            powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports\\
-                            $Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber-report.zip
+                            powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports
+                            $Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\Cucumber-Report.zip
 
                             compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
                          }
