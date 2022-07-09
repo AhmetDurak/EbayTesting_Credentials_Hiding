@@ -54,10 +54,14 @@ pipeline {
             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
-                success {
+                always {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-                         echo '#########    NOTIFICATION IS SENDING TO USER   #########'
+                         echo '#########    REPORT IS SENDING TO EMAIL   #########'
                          step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
+
+
+                         echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
+                         mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
                          }
             }
 
