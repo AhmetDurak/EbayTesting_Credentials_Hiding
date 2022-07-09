@@ -14,9 +14,7 @@ pipeline {
                 //SECRET_FILE_CONTENT = readFile 'Credentials.properties'
             }
             steps {
-                echo '##################################################\n
-                #########     NOW BUILDING IS STARTING   #########\n
-                ##################################################'
+                echo '##################################################\n#########     NOW BUILDING IS STARTING   #########\n##################################################'
 
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
