@@ -59,20 +59,15 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 always {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-
-                         waitUntil {
                             echo '#####################################################'
                             echo '#########   COMPRESSING THE REPORT FOLDER   #########'
                             echo '#####################################################'
 
-                            //powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports
-                            //$Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\Cucumber-Report.zip
-                            //compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
-                            //bat label: 'COMPRESSING THE REPORT FOLDER', script: '''@echo off
-                            //setlocal
-                            //for /d %%x in (C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports) do "**\\**\\7z.exe" a -tzip "%%x.zip" "%%x\\"
-                            //endlocal
-                            //exit'''
+                         waitUntil {
+                            powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports
+                            $Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\Cucumber-Report.zip
+                            compress-archive -LiteralPath $Source_path -DestinationPath $Destination_path'''
+
                          }
 
                          echo '##################################################'
