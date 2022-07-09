@@ -49,7 +49,7 @@ pipeline {
                         echo '########        CLEANING WORKSPACE     ###########'
                         echo '##################################################'
 
-                        cleanWs notFailBuild: true, patterns: [[pattern: 'pom.xml', type: 'EXCLUDE'], [pattern: 'src', type: 'EXCLUDE'], [pattern: 'Credentials.properties', type: 'INCLUDE']]
+                        cleanWs notFailBuild: true, patterns: [[pattern: 'pom.xml', type: 'EXCLUDE'],[pattern: 'target', type: 'INCLUDE'], [pattern: 'src', type: 'EXCLUDE'], [pattern: 'Credentials.properties', type: 'INCLUDE']]
 
                     }
                 }
