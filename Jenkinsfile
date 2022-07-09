@@ -70,7 +70,7 @@ pipeline {
                             //compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
                             bat label: 'COMPRESSING THE REPORT FOLDER', script: '''@echo off
                             setlocal
-                            for /d %%x in (C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports) do "C:\\Program Files\\7-Zip\\7z.exe" a -tzip "%%x.zip" "%%x\\"
+                            for /d %%x in (C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports) do "**\\**\\7z.exe" a -tzip "%%x.zip" "%%x\\"
                             endlocal
                             exit'''
                          }
