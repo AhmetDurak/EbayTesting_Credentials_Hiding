@@ -63,7 +63,9 @@ pipeline {
                          //echo '#########   REPORT IS SENDING TO EMAIL   #########'
                          //echo '##################################################'
                          //step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
-                         emailext (attachLog: true, body: 'This is extended email body', subject: 'TEST-REPORT', to: 'selmn3535@gmail.com')
+                         //emailext (attachLog: true, body: 'This is extended email body', subject: 'TEST-REPORT', to: 'selmn3535@gmail.com')
+
+                         emailext attachLog: true, body: '$DEFAULT_CONTENT', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', replyTo: '$DEFAULT_REPLYTO', subject: '$DEFAULT_SUBJECT', to: 'selmn3535@gmail.com'
 
 
                          //echo '#########################################################'
