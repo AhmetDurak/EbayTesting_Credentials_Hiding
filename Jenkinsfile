@@ -15,8 +15,8 @@ pipeline {
             }
             steps {
                 echo '##################################################'
-                     '#########     NOW BUILDING IS STARTING   #########'
-                     '##################################################'
+                echo '#########     NOW BUILDING IS STARTING   #########'
+                echo '##################################################'
 
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
