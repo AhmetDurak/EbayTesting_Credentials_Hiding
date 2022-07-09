@@ -65,17 +65,21 @@ pipeline {
                             echo '#########   COMPRESSING THE REPORT FOLDER   #########'
                             echo '#####################################################'
 
-                            powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports
-                            $Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\Cucumber-Report.zip
-
-                            compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
+                            //powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports
+                            //$Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\Cucumber-Report.zip
+                            //compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
+                            bat label: 'COMPRESSING THE REPORT FOLDER', script: '''@echo off
+                            setlocal
+                            for /d %%x in (C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports*.*) do "C:\\Program Files\\7-Zip\\7z.exe" a -tzip "%%x.zip" "%%x\\"
+                            endlocal
+                            exit'''
                          }
 
                          echo '##################################################'
                          echo '#########   REPORT IS SENDING TO EMAIL   #########'
                          echo '##################################################'
                          // EMAIL IS SENDING TO USER
-                         emailext attachLog: true, attachmentsPattern: '**/target/Cucumber-Report.zip', body: '$DEFAULT_CONTENT', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', replyTo: '$DEFAULT_REPLYTO', subject: '$DEFAULT_SUBJECT', to: 'selmn3535@gmail.com'
+                         emailext attachLog: true, attachmentsPattern: '**/**/cucumber-html-reports.zip', body: '$DEFAULT_CONTENT', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', replyTo: '$DEFAULT_REPLYTO', subject: '$DEFAULT_SUBJECT', to: 'selmn3535@gmail.com'
 
                          }
             }
