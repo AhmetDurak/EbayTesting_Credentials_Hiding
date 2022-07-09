@@ -14,11 +14,11 @@ pipeline {
                 //SECRET_FILE_CONTENT = readFile 'Credentials.properties'
             }
             steps {
-                echo 'Now building is starting'
+                echo '#########    NOW BUILDING IS STARTING   #########'
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
-                echo 'replacing text with the secret text'
+                echo '#########    REPLACING TEXT WITH THE SECRET TEXT   #########'
 
                 //powershell label: 'Changing secret-key', script: '''$path = "C:\\\\Windows\\\\system32\\\\config\\\\systemprofile\\\\AppData\\\\Local\\\\Jenkins\\\\.jenkins\\\\workspace\\\\FidexioCredentialDemo_master\\\\src\\\\test\\\\java\\\\com\\\\Pages\\\\PageBase.java"
                 //(get-content $path) -replace \'secret-key\',\'selman\'|set-content $path'''
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Test'){
             steps{
-                echo 'Now testing is starting'
+                echo '#########    NOW TESTING IS STARTING   #########'
                 // To run Maven on a Windows agent, use
                 bat "mvn clean"
                 bat "mvn test"
@@ -43,9 +43,9 @@ pipeline {
 
         stage('Deploy'){
                     steps{
-                        echo 'Now deploying is starting'
+                        echo '#########    NOW DEPLOYING IS STARTING   #########'
 
-                        echo 'Cleaning Workspace'
+                        echo '########   CLEANING WORKSPACE ###########'
                         cleanWs notFailBuild: true, patterns: [[pattern: 'pom.xml', type: 'EXCLUDE'], [pattern: 'src', type: 'EXCLUDE'], [pattern: 'Credentials.properties', type: 'INCLUDE']]
 
                     }
@@ -56,8 +56,7 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 success {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-
-                         echo 'Notification is sending to User'
+                         echo '#########    NOTIFICATION IS SENDING TO USER   #########'
                          step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
                          }
             }
