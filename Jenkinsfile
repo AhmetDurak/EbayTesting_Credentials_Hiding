@@ -55,7 +55,7 @@ pipeline {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
 
                          echo 'Notification is sending to User'
-                         mail bcc: '', body: 'In this mail you\'ll be informed about Test Execution', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
+                         step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
                          }
             }
 
