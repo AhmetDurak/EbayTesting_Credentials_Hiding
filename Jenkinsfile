@@ -59,25 +59,24 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 always {
                     cucumber buildStatus: 'null', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', pendingStepsNumber: -1, skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
-                         echo '##################################################'
-                         echo '#########   REPORT IS SENDING TO EMAIL   #########'
-                         echo '##################################################'
-                         //step([$class: 'Mailer', notifyEveryUnstableBuild: false, recipients: 'volkaff51@gmail.com', sendToIndividuals: false])
-                         //emailext (attachLog: true, body: 'This is extended email body', subject: 'TEST-REPORT', to: 'selmn3535@gmail.com')
 
                          waitUntil {
+                            echo '#####################################################'
+                            echo '#########   COMPRESSING THE REPORT FOLDER   #########'
+                            echo '#####################################################'
+
                             powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports\\
                             $Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber-report.zip
 
                             compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
                          }
+
+                         echo '##################################################'
+                         echo '#########   REPORT IS SENDING TO EMAIL   #########'
+                         echo '##################################################'
+                         // EMAIL IS SENDING TO USER
                          emailext attachLog: true, attachmentsPattern: '**/target/Cucumber-Report.zip', body: '$DEFAULT_CONTENT', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', replyTo: '$DEFAULT_REPLYTO', subject: '$DEFAULT_SUBJECT', to: 'selmn3535@gmail.com'
 
-
-                         //echo '#########################################################'
-                         //echo '#########    NOTIFICATION IS SENDING TO EMAIL   #########'
-                         //echo '#########################################################'
-                         //mail bcc: '', body: 'This is a notification message', cc: '', from: '', replyTo: '', subject: 'Test-Report-Demo', to: 'volkaff51@gmail.com'
                          }
             }
 
