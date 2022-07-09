@@ -21,7 +21,9 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/AhmetDurak/EbayTesting_Credentials_Hiding.git'
 
+                echo '############################################################'
                 echo '#########    REPLACING TEXT WITH THE SECRET TEXT   #########'
+                echo '############################################################'
 
                 //powershell label: 'Changing secret-key', script: '''$path = "C:\\\\Windows\\\\system32\\\\config\\\\systemprofile\\\\AppData\\\\Local\\\\Jenkins\\\\.jenkins\\\\workspace\\\\FidexioCredentialDemo_master\\\\src\\\\test\\\\java\\\\com\\\\Pages\\\\PageBase.java"
                 //(get-content $path) -replace \'secret-key\',\'selman\'|set-content $path'''
