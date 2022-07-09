@@ -66,8 +66,10 @@ pipeline {
                          //emailext (attachLog: true, body: 'This is extended email body', subject: 'TEST-REPORT', to: 'selmn3535@gmail.com')
 
                          waitUntil {
-                            powershell label: 'COMPRESSING THE REPORT FOLDER', script: 'compress-archive -LiteralPath "**/target/cucumber/cucumber-html-reports/" -DestinationPath "**/target/Cucumber-Report.zip"'
+                            powershell label: 'COMPRESSING THE REPORT FOLDER', script: '''$Source_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber\\cucumber-html-reports\\
+                            $Destionation_path = "C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Jenkins\\.jenkins\\workspace\\FidexioCredentialDemo_master\\target\\cucumber-report.zip
 
+                            compress-archive -LiteralPath "$Source_path" -DestinationPath "$Destination_path"'''
                          }
                          emailext attachLog: true, attachmentsPattern: '**/target/Cucumber-Report.zip', body: '$DEFAULT_CONTENT', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', replyTo: '$DEFAULT_REPLYTO', subject: '$DEFAULT_SUBJECT', to: 'selmn3535@gmail.com'
 
