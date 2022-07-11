@@ -27,8 +27,8 @@ public class PageBase {
      */
     public void credentials(){
         /*secret-key --> selman*/
-        String username = EncryptionUtils.decrypt("pxWP45eecjK6gSys6j5BKFP8EUDYnp/QNdVu7x7tVVc=", "secret-key");
-        String password = EncryptionUtils.decrypt("YmxjvVNiGgF9hePnl/hbJw==", "secret-key");
+        String username = EncryptionUtils.decrypt(GetCredentials.get("username"), "secret-key");
+        String password = EncryptionUtils.decrypt(GetCredentials.get("password"), "secret-key");
         this.username.sendKeys(username);
         this.password.sendKeys(password + Keys.ENTER);
 
