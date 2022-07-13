@@ -36,8 +36,5 @@ public class PageBase {
         //System.out.println("LOOK AT HERE !!!!!!!!!!!!!!!!!!!");
         //System.out.println(GetCredentials.get(username));
         //System.out.println(GetCredentials.get(password));
-
-
-
     }
 }

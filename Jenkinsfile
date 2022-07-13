@@ -75,7 +75,7 @@ pipeline {
                          echo '##################################################'
                          // EMAIL IS SENDING TO USER
                          //emailext attachLog: true, attachmentsPattern: '**/target/Cucumber-Report.zip', body: '$DEFAULT_CONTENT', postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', replyTo: '$DEFAULT_REPLYTO', subject: '$DEFAULT_SUBJECT', to: 'selmn3535@gmail.com'
-                         emailext body: 'A new test is added', subject: 'TEST-Report', to: 'volkaff51@gmail.com'
+                         emailext body: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!", subject: 'TEST-Report', to: 'volkaff51@gmail.com'
                          }
             }
 
